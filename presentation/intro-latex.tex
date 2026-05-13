@@ -1,0 +1,934 @@
+\documentclass[aspectratio=169]{beamer}
+
+\usetheme{Madrid}
+
+\title{La rédaction scientifique avec \LaTeX}
+\subtitle{Opportunité pour les chercheurs/auteurs et les revues scientifiques}
+\author{Dr Akpoué Josué}
+\date{13 mai 2026}
+
+
+% ---------------------------------------------------
+% CHARGEMENT DES PAQUETS
+% ---------------------------------------------------
+
+\usepackage[utf8]{inputenc}
+\usepackage{linguex,tikz-qtree,tipa}
+\usepackage{verbatim}
+
+
+
+\begin{document}
+	
+	%------------------------------------------------
+	\begin{frame}
+		\titlepage
+	\end{frame}
+	%------------------------------------------------
+	
+	\begin{frame}{Introduction}
+		\begin{itemize}
+			\item La publication scientifique exige aujourd’hui des documents de plus en plus rigoureux sur les plans :
+			\begin{itemize}
+				\item scientifique ;
+				\item typographique ;
+				\item éditorial.
+			\end{itemize}
+			
+			\vspace{0.3cm}
+			
+			\item Les chercheurs en linguistique produisent souvent des documents complexes :
+			\begin{itemize}
+				\item transcriptions phonétiques ;
+				\item exemples glossés ;
+				\item tableaux ;
+				\item arbres syntaxiques ;
+				\item bibliographies importantes.
+			\end{itemize}
+			
+			\vspace{0.3cm}
+			
+			\item Les traitements de texte classiques montrent rapidement leurs limites :
+			\begin{itemize}
+				\item incohérences de mise en page ;
+				\item gestion difficile des références ;
+				\item instabilité des documents longs ;
+				\item travail éditorial lourd pour les revues.
+			\end{itemize}
+			
+			\vspace{0.3cm}
+			
+			\item \LaTeX{} propose une approche différente :
+			\begin{itemize}
+				\item séparation du contenu et de la mise en forme ;
+				\item automatisation de nombreuses tâches ;
+				\item production de documents scientifiques de qualité professionnelle.
+			\end{itemize}
+		\end{itemize}
+	\end{frame}
+	
+	%------------------------------------------------
+	
+	\begin{frame}{Objectifs de la présentation}
+		\begin{itemize}
+			\item Comprendre ce qu’est \LaTeX{} et son origine ;
+			
+			\vspace{0.2cm}
+			
+			\item Découvrir la philosophie de rédaction scientifique basée sur la structure logique des documents ;
+			
+			\vspace{0.2cm}
+			
+			\item Présenter quelques usages de \LaTeX{} dans les travaux linguistiques ;
+			
+			\vspace{0.2cm}
+			
+			\item Montrer les avantages de \LaTeX{} :
+			\begin{itemize}
+				\item pour les auteurs ;
+				\item pour les directeurs de revue ;
+				\item pour les équipes éditoriales.
+			\end{itemize}
+			
+			\vspace{0.2cm}
+			
+			\item Introduire les bases nécessaires pour :
+			\begin{itemize}
+				\item rédiger un manuscrit ;
+				\item créer des modèles ;
+				\item automatiser la mise en page d’une revue scientifique.
+			\end{itemize}
+		\end{itemize}
+	\end{frame}
+	
+	%------------------------------------------------
+	
+	%------------------------------------------------
+	\section{Qu’est-ce que \LaTeX{} ?}
+	%------------------------------------------------
+	
+	\begin{frame}{Qu’est-ce que \LaTeX{} ?}
+		\begin{itemize}
+			\item \LaTeX{} est un système de composition de documents scientifiques.
+			
+			\vspace{0.3cm}
+			
+			\item Il permet de produire des documents de haute qualité typographique :
+			\begin{itemize}
+				\item articles ;
+				\item livres ;
+				\item mémoires ;
+				\item présentations ;
+				\item posters scientifiques.
+			\end{itemize}
+			
+			\vspace{0.3cm}
+			
+			\item Contrairement aux traitements de texte classiques, \LaTeX{} fonctionne à partir :
+			\begin{itemize}
+				\item d’un fichier texte ;
+				\item d’instructions de structuration ;
+				\item d’une compilation vers un document final (PDF).
+			\end{itemize}
+			
+			\vspace{0.3cm}
+			
+			\item L’utilisateur décrit la structure logique du document :
+			\begin{itemize}
+				\item titre ;
+				\item section ;
+				\item citation ;
+				\item bibliographie ;
+				\item exemple linguistique ;
+				\item figure ;
+				\item tableau.
+			\end{itemize}
+		\end{itemize}
+	\end{frame}
+	
+	%------------------------------------------------
+	
+	\begin{frame}{De TeX à \LaTeX{} : bref historique}
+		\begin{itemize}
+			\item À la fin des années 1970, Donald Knuth développe TeX.
+			
+			\vspace{0.3cm}
+			
+			\item Motivation initiale :
+			\begin{itemize}
+				\item produire des ouvrages scientifiques de très haute qualité ;
+				\item améliorer la composition mathématique ;
+				\item garantir une typographie stable et professionnelle.
+			\end{itemize}
+			
+			\vspace{0.3cm}
+			
+			\item TeX est puissant, mais relativement complexe à utiliser.
+			
+			\vspace{0.3cm}
+			
+			\item Leslie Lamport crée ensuite \LaTeX{} :
+			\begin{itemize}
+				\item simplification de TeX ;
+				\item introduction de commandes plus accessibles ;
+				\item automatisation de nombreuses tâches de mise en page.
+			\end{itemize}
+			
+			\vspace{0.3cm}
+			
+			\item Aujourd’hui, \LaTeX{} est largement utilisé dans le monde académique et scientifique.
+		\end{itemize}
+	\end{frame}
+	
+	%------------------------------------------------
+	
+	\begin{frame}{WYSIWYG vs WYSIWYM}
+		\begin{columns}[T]
+			
+			\column{0.48\textwidth}
+			
+			\textbf{WYSIWYG}
+			
+			\vspace{0.2cm}
+			
+			\small
+			\emph{What You See Is What You Get}
+			
+			\vspace{0.3cm}
+			
+			\begin{itemize}
+				\item Mise en forme directe ;
+				\item Approche visuelle ;
+				\item Exemple :
+				\begin{itemize}
+					\item Microsoft Word ;
+					\item LibreOffice Writer.
+				\end{itemize}
+				
+				\vspace{0.2cm}
+				
+				\item L’utilisateur contrôle manuellement :
+				\begin{itemize}
+					\item polices ;
+					\item tailles ;
+					\item espacements ;
+					\item alignements.
+				\end{itemize}
+			\end{itemize}
+			
+			\column{0.48\textwidth}
+			
+			\textbf{WYSIWYM}
+			
+			\vspace{0.2cm}
+			
+			\small
+			\emph{What You See Is What You Mean}
+			
+			\vspace{0.3cm}
+			
+			\begin{itemize}
+				\item Approche structurelle ;
+				\item Séparation contenu / présentation ;
+				\item Exemple :
+				\begin{itemize}
+					\item \LaTeX{}
+				\end{itemize}
+				
+				\vspace{0.2cm}
+				
+				\item L’utilisateur décrit :
+				\begin{itemize}
+					\item la structure ;
+					\item le rôle logique ;
+					\item la sémantique du contenu.
+				\end{itemize}
+			\end{itemize}
+			
+		\end{columns}
+		
+		\vspace{0.4cm}
+		
+		\begin{block}{Conséquence}
+			Cette approche favorise la cohérence, l’automatisation et la stabilité des documents scientifiques.
+		\end{block}
+		
+	\end{frame}
+	
+	%------------------------------------------------
+	
+	%------------------------------------------------
+	\section{Applications de \LaTeX{}}
+	%------------------------------------------------
+	
+	\begin{frame}{Les principales applications de \LaTeX{}}
+		\begin{itemize}
+			\item Rédaction d’articles scientifiques ;
+			
+			\vspace{0.2cm}
+			
+			\item Production de livres, mémoires et thèses ;
+			
+			\vspace{0.2cm}
+			
+			\item Création de présentations académiques avec Beamer ;
+			
+			\vspace{0.2cm}
+			
+			\item Réalisation de posters scientifiques ;
+			
+			\vspace{0.2cm}
+			
+			\item Production de documents techniques et professionnels ;
+			
+			\vspace{0.2cm}
+			
+			\item Automatisation de la mise en page éditoriale ;
+			
+			\vspace{0.2cm}
+			
+			\item Gestion avancée des références bibliographiques ;
+			
+			\vspace{0.2cm}
+			
+			\item Création de documents scientifiques multilingues.
+		\end{itemize}
+	\end{frame}
+	
+	%------------------------------------------------
+	
+	\begin{frame}{Applications en linguistique}
+		\begin{itemize}
+			\item \textbf{Transcriptions phonétiques}
+			\begin{itemize}
+				\item alphabet phonétique international (API/IPA) ;
+				\item caractères Unicode ;
+				\item diacritiques spécialisés.
+			\end{itemize}
+			
+			\vspace{0.3cm}
+			
+			\item \textbf{Exemples linguistiques}
+			\begin{itemize}
+				\item numérotation automatique ;
+				\item alignement cohérent ;
+				\item références croisées.
+			\end{itemize}
+			
+			\vspace{0.3cm}
+			
+			\item \textbf{Gloses interlinéaires}
+			\begin{itemize}
+				\item alignement automatique des morphèmes ;
+				\item présentation normalisée.
+			\end{itemize}
+		\end{itemize}
+	\end{frame}
+	
+	%------------------------------------------------
+	
+	\begin{frame}{Autres usages utiles en linguistique}
+		\begin{itemize}
+			\item \textbf{Arbres syntaxiques}
+			\begin{itemize}
+				\item représentation graphique des structures syntaxiques ;
+				\item packages spécialisés.
+			\end{itemize}
+			
+			\vspace{0.3cm}
+			
+			\item \textbf{Tableaux linguistiques}
+			\begin{itemize}
+				\item paradigmes morphologiques ;
+				\item tableaux comparatifs ;
+				\item données lexicales.
+			\end{itemize}
+			
+			\vspace{0.3cm}
+			
+			\item \textbf{Bibliographies scientifiques}
+			\begin{itemize}
+				\item gestion automatique des références ;
+				\item styles bibliographiques ;
+				\item cohérence des citations.
+			\end{itemize}
+			
+			\vspace{0.3cm}
+			
+			\item \textbf{Documents multilingues}
+			\begin{itemize}
+				\item coexistence de plusieurs langues ;
+				\item prise en charge de différents systèmes d’écriture.
+			\end{itemize}
+		\end{itemize}
+	\end{frame}
+	
+	%------------------------------------------------
+	
+	%------------------------------------------------
+	\section{Pourquoi utiliser \LaTeX{} en linguistique ?}
+	%------------------------------------------------
+	
+	\begin{frame}{Avantages pour les auteurs}
+		\begin{itemize}
+			\item \textbf{Qualité typographique professionnelle}
+			\begin{itemize}
+				\item gestion des espacements ;
+				\item justification ;
+				\item césures ;
+				\item homogénéité du document.
+			\end{itemize}
+			
+			\vspace{0.3cm}
+			
+			\item \textbf{Gestion automatique des références}
+			\begin{itemize}
+				\item citations ;
+				\item bibliographie ;
+				\item renvois internes ;
+				\item numérotation automatique.
+			\end{itemize}
+			
+			\vspace{0.3cm}
+			
+			\item \textbf{Adapté aux documents complexes}
+			\begin{itemize}
+				\item exemples glossés ;
+				\item IPA ;
+				\item arbres syntaxiques ;
+				\item tableaux ;
+				\item documents longs.
+			\end{itemize}
+			
+			\vspace{0.3cm}
+			
+			\item \textbf{Gain de temps à long terme}
+			\begin{itemize}
+				\item automatisation ;
+				\item réutilisation de modèles ;
+				\item stabilité des documents.
+			\end{itemize}
+		\end{itemize}
+	\end{frame}
+	
+	%------------------------------------------------
+	
+	\begin{frame}{Avantages pour les revues scientifiques}
+		\begin{itemize}
+			\item \textbf{Uniformisation des articles}
+			\begin{itemize}
+				\item même structure ;
+				\item même typographie ;
+				\item même style bibliographique.
+			\end{itemize}
+			
+			\vspace{0.3cm}
+			
+			\item \textbf{Réduction du travail éditorial}
+			\begin{itemize}
+				\item moins de corrections manuelles ;
+				\item automatisation de la mise en page ;
+				\item cohérence des publications.
+			\end{itemize}
+			
+			\vspace{0.3cm}
+			
+			\item \textbf{Création de modèles de revue}
+			\begin{itemize}
+				\item classes de documents ;
+				\item fichiers de style ;
+				\item modèles auteurs.
+			\end{itemize}
+			
+			\vspace{0.3cm}
+			
+			\item \textbf{Professionnalisation de la publication}
+			\begin{itemize}
+				\item qualité comparable aux standards internationaux ;
+				\item meilleure stabilité des archives numériques ;
+				\item pérennité des documents.
+			\end{itemize}
+		\end{itemize}
+	\end{frame}
+	
+	%------------------------------------------------
+	
+	\begin{frame}{Pourquoi \LaTeX{} est particulièrement pertinent en linguistique}
+		\begin{block}{Une discipline à forte complexité typographique}
+			Les travaux linguistiques combinent souvent :
+			\begin{itemize}
+				\item plusieurs langues ;
+				\item caractères spéciaux ;
+				\item transcriptions phonétiques ;
+				\item gloses interlinéaires ;
+				\item structures syntaxiques ;
+				\item tableaux complexes.
+			\end{itemize}
+		\end{block}
+		
+		\vspace{0.4cm}
+		
+		\begin{alertblock}{Conséquence}
+			\LaTeX{} permet de gérer cette complexité de manière plus stable, plus cohérente et plus professionnelle que les solutions de mise en page classiques.
+		\end{alertblock}
+		
+	\end{frame}
+	
+	%------------------------------------------------
+	
+	
+	%------------------------------------------------
+	\section{Conclusion}
+	%------------------------------------------------
+	
+	\begin{frame}{Conclusion}
+		\begin{itemize}
+			\item \LaTeX{} est bien plus qu’un simple outil de mise en page :
+			\begin{itemize}
+				\item c’est un système de composition scientifique ;
+				\item une approche structurée de la rédaction académique ;
+				\item un outil d’automatisation éditoriale.
+			\end{itemize}
+			
+			\vspace{0.4cm}
+			
+			\item Pour les chercheurs et auteurs, il offre :
+			\begin{itemize}
+				\item une meilleure qualité typographique ;
+				\item une gestion efficace des documents complexes ;
+				\item une plus grande stabilité des manuscrits.
+			\end{itemize}
+			
+			\vspace{0.4cm}
+			
+			\item Pour les revues scientifiques, il permet :
+			\begin{itemize}
+				\item l’uniformisation des publications ;
+				\item la réduction du travail de mise en page ;
+				\item la création de chaînes éditoriales plus professionnelles.
+			\end{itemize}
+			
+			\vspace{0.4cm}
+			
+			\item Dans le domaine de la linguistique, où les exigences typographiques sont particulièrement élevées, \LaTeX{} constitue une solution puissante et durable.
+		\end{itemize}
+	\end{frame}
+	
+	%------------------------------------------------
+	
+	\begin{frame}{Perspectives}
+		\begin{itemize}
+			\item Développement de modèles adaptés aux revues locales ;
+			
+			\vspace{0.3cm}
+			
+			\item Création de fichiers de style pour automatiser la publication ;
+			
+			\vspace{0.3cm}
+			
+			\item Formation des chercheurs et étudiants à la rédaction scientifique structurée ;
+			
+			\vspace{0.3cm}
+			
+			\item Intégration progressive de \LaTeX{} dans les pratiques éditoriales des sciences du langage.
+		\end{itemize}
+		
+		\vspace{0.6cm}
+		
+		\begin{center}
+			\Large
+			Merci pour votre attention
+		\end{center}
+		
+	\end{frame}
+	
+	\begin{frame}
+		\begin{center}
+			\Large
+			Merci pour votre attention
+		\end{center}
+	\end{frame}
+	
+	%------------------------------------------------
+	
+	\appendix
+	
+	%------------------------------------------------
+	\section{Travaux dirigés}
+	%------------------------------------------------
+	
+	\begin{frame}[fragile]{TD1 — Document minimal}
+		\textbf{Objectif :} créer et compiler un premier document \LaTeX{}.
+		
+		\vspace{0.4cm}
+		
+		\textbf{Exemple :}
+		
+		\small
+		
+		\begin{verbatim}
+			\documentclass{article}
+ 
+			\begin{document}
+				
+				Bonjour le monde !
+				
+			\end{document}
+		\end{verbatim}
+		
+		\normalsize
+		
+		\vspace{0.3cm}
+		
+		\textbf{Points abordés :}
+		\begin{itemize}
+			\item structure minimale ;
+			\item compilation PDF ;
+			\item rôle du préambule.
+		\end{itemize}
+		
+	\end{frame}
+	
+	%------------------------------------------------
+	
+	\begin{frame}[fragile]{TD2 — Métadonnées et page de titre}
+		\textbf{Objectif :} ajouter les informations du document.
+		
+		\vspace{0.4cm}
+		
+		\small
+		
+		\begin{verbatim}
+			\title{Titre du document}
+			\author{Nom de l'auteur}
+			\date{\today}
+			
+			\begin{document}
+				
+				\maketitle
+				
+				\begin{abstract}
+					Résumé du document.
+				\end{abstract}
+				
+			\end{document}
+		\end{verbatim}
+		
+		\normalsize
+		
+		\vspace{0.3cm}
+		
+		\textbf{Points abordés :}
+		\begin{itemize}
+			\item titre ;
+			\item auteur ;
+			\item date ;
+			\item résumé.
+		\end{itemize}
+		
+	\end{frame}
+	
+	%------------------------------------------------
+	
+	\begin{frame}[fragile]{TD3 — Structuration du document}
+		\textbf{Objectif :} organiser un texte scientifique.
+		
+		\vspace{0.4cm}
+		
+		\small
+		
+		\begin{verbatim}
+			\section{Introduction}
+			
+			\subsection{Contexte}
+			
+			\subsection{Objectifs}
+			
+			\section{Méthodologie}
+		\end{verbatim}
+		
+		\normalsize
+		
+		\vspace{0.3cm}
+		
+		\textbf{Points abordés :}
+		\begin{itemize}
+			\item sections ;
+			\item sous-sections ;
+			\item hiérarchie logique du document.
+		\end{itemize}
+		
+	\end{frame}
+	
+	%------------------------------------------------
+	
+	\begin{frame}[fragile]{TD4 — Mise en forme du texte}
+		\textbf{Objectif :} appliquer des styles simples.
+		
+		\vspace{0.4cm}
+		
+		\small
+		
+		\begin{verbatim}
+			\textit{Texte en italique}
+			
+			\textbf{Texte en gras}
+			
+			\emph{Texte emphatique}
+			
+			\textsc{Petites capitales}
+		\end{verbatim}
+		
+		\normalsize
+		
+		\vspace{0.3cm}
+		
+		\textbf{Points abordés :}
+		\begin{itemize}
+			\item italiques ;
+			\item gras ;
+			\item emphase ;
+			\item petites capitales.
+		\end{itemize}
+		
+	\end{frame}
+	
+	%------------------------------------------------
+	
+	\begin{frame}[fragile]{TD5 — Références croisées et bibliographie}
+		\textbf{Objectif :} automatiser les renvois et les références.
+		
+		\vspace{0.4cm}
+		
+		\small
+		
+		\begin{verbatim}
+			\section{Introduction}
+			\label{sec:intro}
+			
+			Voir la section \ref{sec:intro}.
+			
+			Selon \cite{dupont2020} ...
+			
+			\bibliographystyle{plain}
+			\bibliography{references}
+		\end{verbatim}
+		
+		\normalsize
+		
+		\vspace{-0.3cm}
+		
+		\textbf{Points abordés :}
+		\begin{itemize}
+			\item \verb|\label| ;
+			\item \verb|\ref| ;
+			\item \verb|\cite| ;
+			\item bibliographie automatique.
+		\end{itemize}
+		
+	\end{frame}
+	
+	%------------------------------------------------
+	
+	\begin{frame}[fragile]{TD6 — Transcription phonétique}
+		\textbf{Objectif :} écrire des transcriptions phonétiques.
+		
+		\vspace{0.3cm}
+		
+		{Avec le paquet \verb|tipa| ou \verb|xsipa| :}
+		
+		\vspace{0.3cm}
+		
+		\small
+		
+		\begin{verbatim}
+			\usepackage{tipa}
+			
+			[b\textepsilon\ng]
+			
+			\usepackage{xsipa}
+			
+			[b\xsE]
+		\end{verbatim}
+		
+		
+		\normalsize
+		
+		\vspace{0.3cm}
+		
+		\textbf{Points abordés :}
+		\begin{itemize}
+			\item Unicode ;
+			\item caractères IPA ;
+			\item polices linguistiques.
+		\end{itemize}
+		
+	\end{frame}
+	
+	%------------------------------------------------
+	
+	\begin{frame}[fragile]{TD7 — Exemples linguistiques avec linguex}
+		\textbf{Objectif :} produire des exemples linguistiques numérotés.
+		
+		\vspace{0.4cm}
+		
+		\small
+		
+		\begin{verbatim}
+			\usepackage{linguex}
+			
+			\ex.
+			Ceci est un exemple linguistique.
+			
+			\ex.
+			\a. Première phrase
+			\b. Deuxième phrase
+		\end{verbatim}
+		
+		\normalsize
+		
+		\vspace{0.3cm}
+		
+		\textbf{Points abordés :}
+		\begin{itemize}
+			\item numérotation automatique ;
+			\item sous-exemples ;
+			\item alignement.
+		\end{itemize}
+		
+	\end{frame}
+	
+	%------------------------------------------------
+	
+	\begin{frame}[fragile]{TD8 — Exemples glossés avec linguex}
+		\textbf{Objectif :} créer des gloses interlinéaires.
+		
+		\vspace{0.4cm}
+		
+		\small
+		
+		\begin{verbatim}
+			\usepackage{linguex}
+			
+			\exg.
+			Kofi bE-RE ba\\
+			Kofi venir-PROG ici\\
+			`Kofi vient ici.'
+		\end{verbatim}
+		
+		\normalsize
+		
+		\vspace{0.3cm}
+		
+		\textbf{Points abordés :}
+		\begin{itemize}
+			\item ligne source ;
+			\item ligne de gloses ;
+			\item traduction.
+		\end{itemize}
+		
+	\end{frame}
+	
+	%------------------------------------------------
+	
+	\begin{frame}[fragile]{TD9 — Insertion d’images}
+		\textbf{Objectif :} intégrer des figures dans un document.
+		
+		\vspace{0.4cm}
+		
+		\small
+		
+		\begin{verbatim}
+			\usepackage{graphicx}
+			
+			\begin{figure}
+				\centering
+				\includegraphics[width=.6\textwidth]{image}
+				\caption{Une image}
+			\end{figure}
+		\end{verbatim}
+		
+		\normalsize
+		
+		\vspace{0.3cm}
+		
+		\textbf{Points abordés :}
+		\begin{itemize}
+			\item insertion d’images ;
+			\item taille ;
+			\item légendes ;
+			\item centrage.
+		\end{itemize}
+		
+	\end{frame}
+	
+	%------------------------------------------------
+	
+	\begin{frame}[fragile]{TD10 — Arbres syntaxiques avec tikz-qtree}
+		\textbf{Objectif :} produire des arbres syntaxiques.
+		
+		\vspace{0.4cm}
+		
+		\small
+		
+		\begin{verbatim}
+			\usepackage{tikz-qtree}
+			
+			\begin{tikzpicture}
+				\Tree [.TP
+				[.DP Kofi ]
+				[.T'
+				[.T ]
+				[\qroof{mange du riz}.VP ]]]
+			\end{tikzpicture}
+		\end{verbatim}
+		
+		\normalsize
+		
+		\vspace{0.3cm}
+		
+		\textbf{Points abordés :}
+		\begin{itemize}
+			\item structure hiérarchique ;
+			\item nœuds syntaxiques ;
+			\item représentation graphique.
+		\end{itemize}
+		
+	\end{frame}
+	
+	%------------------------------------------------
+	
+	\begin{frame}[fragile]{TD11 — Fontspec et polices OpenType}
+		\textbf{Objectif :} utiliser des polices externes avec XeLaTeX/LuaLaTeX.
+		
+		\vspace{0.4cm}
+		
+		\small
+		
+		\begin{verbatim}
+			\usepackage{fontspec}
+			
+			\setmainfont{Times New Roman}
+			
+			\setsansfont{Arial}
+			
+			\setmonofont{JetBrains Mono}
+		\end{verbatim}
+		
+		\normalsize
+		
+		\vspace{0.3cm}
+		
+		\textbf{Points abordés :}
+		\begin{itemize}
+			\item polices système ;
+			\item OpenType ;
+			\item TrueType ;
+			\item compatibilité Unicode.
+		\end{itemize}
+		
+	\end{frame}
+	
+	%------------------------------------------------
+	
+\end{document}
